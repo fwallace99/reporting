@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order_id: MyString
+  customer_id: MyString
+  address_id: MyString
+  charge_id: MyString
+  shopify_order_id: MyString
+  shopify_order_number: MyString
+  created_at: 2017-06-27 20:48:38
+  scheduled_at: 2017-06-27 20:48:38
+  processed_at: 2017-06-27 20:48:38
+  status: MyString
+  first_name: MyString
+  last_name: MyString
+  email: MyString
+  total_price: 9.99
+
+two:
+  order_id: MyString
+  customer_id: MyString
+  address_id: MyString
+  charge_id: MyString
+  shopify_order_id: MyString
+  shopify_order_number: MyString
+  created_at: 2017-06-27 20:48:38
+  scheduled_at: 2017-06-27 20:48:38
+  processed_at: 2017-06-27 20:48:38
+  status: MyString
+  first_name: MyString
+  last_name: MyString
+  email: MyString
+  total_price: 9.99
