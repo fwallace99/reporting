@@ -32,6 +32,8 @@ recharge_access_token = "21ac88718be7466a983368e8a1a2fb4c"
 uri = URI.parse(ENV['DATABASE_URL'])
 conn = PG.connect(uri.hostname, uri.port, nil, nil, uri.path[1..-1], uri.user, uri.password)
 
+conn.prepare('statement1', "insert into orders (order_id, shopify_order_id, shopify_order_number, scheduled_at, status, created_at, updated_at, first_name, last_name, email, total_price) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)")
+
 page_size = 250
 num_pages = (total_orders/page_size.to_f).ceil
 
@@ -52,10 +54,26 @@ puts num_pages
     puts temp_stuff
     temp_stuff.each do |funky|
         puts "***************************"
-        puts funky.inspect
+      #  puts funky.inspect
+        recharge_id = funky['id']
+        shopify_id  = funky['shopify_id']
+        shopify_order_id = funky['shopify_order_id']
+        shopify_order_number = funky['shopify_order_number']
+        scheduled_at = funky['scheduled_at']
+        status = funky['status']
+        created_at = funky['created_at']
+        updated_at = funky['updated_at']
+        first_name = funky['first_name']
+        last_name = funky['last_name']
+        email = funky['email']
+        total_price = funky['total_price']
+        puts "#{created_at}, #{email}, #{total_price}"
+        conn.exec_prepared('statement1', [recharge_id,  shopify_order_id, shopify_order_number, scheduled_at, status, created_at, updated_at, first_name, last_name, email, total_price])
+
+
         puts "**************************"
       end
-    
+
 
     end
 
