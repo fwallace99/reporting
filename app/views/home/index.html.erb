@@ -9,14 +9,9 @@
 <% end %>
 
 <h2>Subscriptions</h2>
-<%= @sub_count.inspect %>
 <h3>We have the following number of Subscriptions</h3>
-<%= @my_numbers %>
-
-<h2>Products</h2>
-
-<ul>
-  <% @products.each do |product| %>
-    <li><%= link_to product.title, "https://#{@shop_session.url}/admin/products/#{product.id}", target: "_top" %></li>
-  <% end %>
-</ul>
+<%= number_with_delimiter(@my_numbers) %>
+<h3>We have the following gross revenue for Subscriptions in June:</h3>
+<%= number_to_currency(@subscription_gains) %>
+<h3>We have the following gross cancelation losses for Subscriptions in June:</h3>
+<%= number_to_currency(@subscription_losses) %>
